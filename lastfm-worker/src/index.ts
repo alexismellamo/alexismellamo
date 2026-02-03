@@ -53,7 +53,7 @@ export default {
         return new Response(svg, {
           headers: {
             'Content-Type': 'image/svg+xml',
-            'Cache-Control': 'public, max-age=60',
+            'Cache-Control': 'public, max-age=5',
             ...corsHeaders,
           },
         });
@@ -81,7 +81,7 @@ export default {
         return new Response(svg, {
           headers: {
             'Content-Type': 'image/svg+xml',
-            'Cache-Control': 'public, max-age=60',
+            'Cache-Control': 'public, max-age=5',
             ...corsHeaders,
           },
         });
