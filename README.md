@@ -13,7 +13,9 @@
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/now-playing" width="100%" alt="Now Playing" />
+<a href="https://www.last.fm/user/alexismellamo">
+  <img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/now-playing" width="100%" alt="Now Playing" />
+</a>
 </td>
 <td width="50%" valign="top">
 <a href="https://hardcover.app/@alexismellamo">
@@ -23,7 +25,9 @@
 </tr>
 <tr>
 <td width="50%" valign="top">
-<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/recent-tracks" width="100%" alt="Recent Tracks" />
+<a href="https://www.last.fm/user/alexismellamo">
+  <img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/recent-tracks" width="100%" alt="Recent Tracks" />
+</a>
 </td>
 <td width="50%" valign="top">
 <a href="https://hardcover.app/@alexismellamo">
