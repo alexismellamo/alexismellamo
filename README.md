@@ -2,7 +2,7 @@
 
 <table>
 <tr>
-<td width="20%">
+<td width="20%" valign="top">
 
 <a href="https://blento.app/alexismella.mov">
   <img src="https://img.shields.io/badge/Blento-FF6B6B?style=for-the-badge&logo=music&logoColor=white" alt="Blento">
@@ -17,20 +17,26 @@
 </a>
 
 </td>
-<td width="80%">
-<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/now-playing" width="500" alt="Now Playing" />
-
+<td width="40%" valign="top">
+<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/now-playing" width="100%" alt="Now Playing" />
+</td>
+<td width="40%" valign="top">
+<a href="https://hardcover.app/@alexismellamo">
+  <img src="./books/currently-reading.svg" width="100%" alt="Currently Reading" />
+</a>
 </td>
 </tr>
 </table>
 
-
-<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/recent-tracks" width="500" alt="Recent Tracks" />
-
+<table>
+<tr>
+<td width="50%" valign="top">
+<img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/recent-tracks" width="100%" alt="Recent Tracks" />
+</td>
+<td width="50%" valign="top">
 <a href="https://hardcover.app/@alexismellamo">
-  <img src="./books/currently-reading.svg" width="500" alt="Currently Reading" />
+  <img src="./books/books-read.svg" width="100%" alt="Books read this year" />
 </a>
-
-<a href="https://hardcover.app/@alexismellamo">
-  <img src="./books/books-read.svg" width="500" alt="Books read this year" />
-</a>
+</td>
+</tr>
+</table>
