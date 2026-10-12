@@ -26,3 +26,11 @@
 
 
 <img src="https://lastfm-github-profile.alexisnavarro23.workers.dev/recent-tracks" width="500" alt="Recent Tracks" />
+
+<a href="https://hardcover.app/@alexismellamo">
+  <img src="./books/currently-reading.svg" width="500" alt="Currently Reading" />
+</a>
+
+<a href="https://hardcover.app/@alexismellamo">
+  <img src="./books/books-read.svg" width="500" alt="Books read this year" />
+</a>

@@ -1,11 +1,33 @@
+import { coverToBase64, getBooks } from './hardcover';
 import { getRecentTracks, imageToBase64 } from './lastfm';
+import { COVER_HEIGHT, COVER_WIDTH, generateBooksReadSvg } from './svg/books-read';
+import { generateCurrentlyReadingSvg } from './svg/currently-reading';
 import { generateNowPlayingSvg } from './svg/now-playing';
 import { generateRecentTracksSvg } from './svg/recent-tracks';
 
 type Env = {
   LASTFM_API_KEY: string;
   LASTFM_USERNAME: string;
+  HARDCOVER_TOKEN?: string;
 };
+
+const BOOK_PATHS = ['/currently-reading', '/books-read'];
+
+async function renderBooksSvg(path: string, token: string): Promise<string> {
+  const year = new Date().getFullYear();
+  const { reading, read } = await getBooks(token, year);
+
+  if (path === '/currently-reading') {
+    const book = reading[0] || null;
+    const cover = book ? await coverToBase64(book.imageUrl, 80, 120) : '';
+    return generateCurrentlyReadingSvg(book, cover);
+  }
+
+  const covers = await Promise.all(
+    read.map((book) => coverToBase64(book.imageUrl, COVER_WIDTH, COVER_HEIGHT))
+  );
+  return generateBooksReadSvg(read, covers, year);
+}
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -20,6 +42,31 @@ export default {
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders });
+    }
+
+    if (BOOK_PATHS.includes(path)) {
+      if (!env.HARDCOVER_TOKEN) {
+        return new Response(generateErrorSvg('Configuration Error', 'HARDCOVER_TOKEN not set'), {
+          headers: { 'Content-Type': 'image/svg+xml', ...corsHeaders },
+        });
+      }
+
+      try {
+        const svg = await renderBooksSvg(path, env.HARDCOVER_TOKEN);
+        return new Response(svg, {
+          headers: {
+            'Content-Type': 'image/svg+xml',
+            'Cache-Control': 'public, max-age=1800',
+            ...corsHeaders,
+          },
+        });
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        return new Response(generateErrorSvg('Error', errorMessage), {
+          status: 500,
+          headers: { 'Content-Type': 'image/svg+xml', ...corsHeaders },
+        });
+      }
     }
 
     if (!env.LASTFM_API_KEY || !env.LASTFM_USERNAME) {
